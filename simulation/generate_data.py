@@ -40,5 +40,5 @@ class DataGeneration(Window):
 
         # Save dataset
         if self.i == c.n_datapoints:
-            np.savez_compressed('network/dataset', x=self.x, y=self.y)
+            np.savez_compressed('network/dataset_bigwindow', x=self.x, y=self.y)
             self.stop()

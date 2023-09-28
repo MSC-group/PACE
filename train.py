@@ -3,9 +3,9 @@ import time
 from network.vae import VAE
 
 
-def main():
+def main(fn_train='network/dataset_bigwindow.npz', fn_vae='network/vae_bigwindow.net'):
     # Load dataset
-    dataset = np.load('network/dataset.npz')
+    dataset = np.load(fn_train)
     x, y = dataset['x'], dataset['y']
 
     # Initialize network
@@ -18,7 +18,7 @@ def main():
     print('\nTime elapsed: {:.2f} seconds'.format(time.time() - start))
 
     # Save network
-    network.save()
+    network.save(fn_vae)
 
 
 if __name__ == '__main__':

@@ -61,7 +61,7 @@ class Test(Window):
         # axs[1].imshow(y_pred.reshape(c.height, c.width, 3))
         # axs[2].imshow(y_final.reshape(c.height, c.width, 3))
         # plt.show()
-
+        
         # Compute errors
         self.dec_acc[self.i] = norm(y_pred - visual_obs)
         self.enc_acc[self.i] = norm(x_pred - joint_obs)

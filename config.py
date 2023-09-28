@@ -1,6 +1,6 @@
 # Window
-width = 128
-height = 96
+width = 200
+height = 100
 off_x = -20
 off_y = 22
 fps = 0

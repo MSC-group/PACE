@@ -246,16 +246,16 @@ class VAE(nn.Module):
 
         return mse + kld, mse
 
-    def save(self):
+    def save(self, fn='network/vae_bigwindow.net'):
         """
         Save network to file
         """
-        torch.save(self.state_dict(), 'network/vae.net')
+        torch.save(self.state_dict(), fn)
 
-    def load(self):
+    def load(self, fn='network/vae_bigwindow.net'):
         """
         Load network from file
         """
-        self.load_state_dict(torch.load('network/vae.net',
+        self.load_state_dict(torch.load(fn,
                                         map_location=device))
         self.eval()
