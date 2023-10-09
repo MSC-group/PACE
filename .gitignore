@@ -1,0 +1,16 @@
+# All large data-related files
+**.pkl
+**.pyc
+__pycache__/*
+**/__pycache__/**
+**.png
+**.npz
+
+*.DS_Store
+
+
+# Examples
+# *.mp4
+# !experiment_movies/just*.mp4
+# *.tar
+# *.tsv

@@ -125,6 +125,12 @@ class Window(pyglet.window.Window):
     # Get proprioceptive observation
     def get_joint_obs(self):
         angles_noise = utils.add_gaussian_noise(self.arm.angles, c.w_p)
+        if (c.vibration > 0) and (self.agent.mode > 0):
+            if int(c.n_trials / 3) < self.trial < int(c.n_trials / 3) * 2:
+                angles_noise = utils.add_biased_noise(self.arm.angles, c.w_p, -c.vibration)
+            elif self.trial > int(c.n_trials / 3) * 2:
+                angles_noise = utils.add_biased_noise(self.arm.angles, c.w_p, c.vibration)
+
         return utils.normalize(angles_noise, self.arm.limits)
 
     # Get velocity observation
@@ -149,7 +155,7 @@ class Window(pyglet.window.Window):
         self.target_pos = self.arm.kinematics(self.target_joint)[-1, :2]
 
         # Sample velocity
-        angle = np.random.rand() * 2 * np.pi
+        angle = np.random.rand() * 2 * np.pi # TODO: Learning model for optimal velocity
         self.target_dir = np.array((np.cos(angle), np.sin(angle)))
 
     # Move target

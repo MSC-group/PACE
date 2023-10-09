@@ -42,6 +42,12 @@ def add_gaussian_noise(array, noise):
     sigma = noise ** 0.5
     return array + np.random.normal(0, sigma, np.shape(array))
 
+# Add shifted Gaussian noise to elbow (muscle-vibration like bias)
+def add_biased_noise(array, noise, direction):
+    sigma = noise ** 0.5
+    noise_array = np.random.normal(0, sigma, np.shape(array))
+    noise_array[1] = np.random.normal(direction, sigma, 1)
+    return array + noise_array
 
 # Normalize data
 def normalize(x, limits):

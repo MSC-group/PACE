@@ -9,7 +9,7 @@ from simulation.inference import Inference
 def main():
     # Parse arguments
     options = utils.get_sim_options()
-
+    
     # Choose simulation
     if options.generate_data:
         sim = DataGeneration()

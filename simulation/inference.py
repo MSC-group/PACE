@@ -37,7 +37,7 @@ class Inference(Window):
         # Move objects
         if c.context == 'dynamic':
             self.move_target()
-
+        #print(self)
         # Track log
         self.log.track(self.trial - 1, self.step, self.agent,
                        self.arm, self.target_pos)
@@ -56,7 +56,8 @@ class Inference(Window):
 
         if self.trial == c.n_trials:
             # Simulation done
-            utils.print_score(self.log, time.time() - self.time)
+            if c.n_trials > 3:
+                utils.print_score(self.log, time.time() - self.time)
             self.log.save_log()
             self.stop()
         else:

@@ -61,7 +61,7 @@ def display_precisions(params, titles, measures, ylabels,
                                              measures, limits):
             if measure == 'acc':
                 sns.barplot(x='val', y=measure, ax=axs[j, i], data=score,
-                            palette=color, ci=None, order=o)
+                            palette=color, errorbar=None, order=o)
             else:
                 sns.barplot(x='val', y=measure, ax=axs[j, i], data=score,
                             palette=color, order=o)
@@ -175,10 +175,10 @@ def display_model(limits, order):
 
         if measure == 'acc':
             sns.barplot(x='model', y=measure, ax=axs[j], data=score,
-                        palette=color, ci=None, order=order)
+                        palette=color, errorbar=None, order=order)
         else:
             sns.barplot(x='model', y=measure, ax=axs[j], data=score,
-                        palette=color, ci=None, order=order)
+                        palette=color, errorbar=None, order=order)
 
     plt.savefig('plots/model', bbox_inches='tight')
     plt.close()

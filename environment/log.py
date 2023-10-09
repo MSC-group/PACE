@@ -1,6 +1,7 @@
 import numpy as np
 import utils
 import config as c
+import pickle
 
 
 # Define log class
@@ -54,7 +55,11 @@ class Log:
 
     # Save log to file
     def save_log(self):
-        np.savez_compressed('simulation/log' + c.log_name,
+        log_start = {var:vars(c)[var] for var in dir(c) if not var.startswith('_')}
+        
+        with open('simulation/data/config' + c.log_name + '.pkl', 'wb') as f:
+            pickle.dump(log_start, f)
+        np.savez_compressed('simulation/data/log' + c.log_name,
                             mu=self.mu, mu_dot=self.mu_dot,
                             actions=self.actions,
                             actions_dot=self.actions_dot,

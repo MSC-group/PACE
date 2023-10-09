@@ -154,6 +154,7 @@ class Agent:
         Switch to active inference
         :param step: current step
         """
+        #print('Step: ', step, '\n')
         if step == 0:
             self.mode = 0
             self.slope = np.ones((30, c.n_joints))
@@ -169,6 +170,7 @@ class Agent:
             if (np.linalg.norm(self.slope, axis=1) < 0.008).all() or \
                     step == int(c.n_steps / c.phases_ratio):
                 self.mode = 1
+                #print('Step: ', step, '\n')
         elif c.phases == 'immediate':
             self.mode = 1
 
@@ -179,6 +181,7 @@ class Agent:
         :param target_joint: target joint angles
         :param step: current step
         """
+        
         # Get predictions
         P, grad_v, p_vel = self.get_p()
 
@@ -197,7 +200,7 @@ class Agent:
 
         # Get belief update
         self.get_mu_dot(likelihood, E_mu)
-
+        
         # Get action update
         # self.get_a_dot(likelihood.dot(self.G_p))
         self.get_a_dot(E_s[0] * self.pi_s[0] * self.alpha[0])
