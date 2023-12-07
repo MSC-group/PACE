@@ -29,7 +29,7 @@ learning_rate = 0.001
 step_size = 20
 gamma = 0.95
 variance = 0.02
-log_name = '_blind-vibrations1_incl-noise'
+log_name = 'test'
 
 # Inference
 task = 'test'  # test, all, single
@@ -42,7 +42,7 @@ target_vel = 0.1
 target_min_max = (5, 12)
 reach_dist = 10
 
-n_trials = 60 # 20
+n_trials = 2 # 20
 n_steps = 500 # 500
 n_reps = 2
 n_orders = 2

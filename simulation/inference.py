@@ -55,6 +55,7 @@ class Inference(Window):
         self.success += self.task_done()
 
         if self.trial == c.n_trials:
+            print(self.agent.pi_s)
             # Simulation done
             if c.n_trials > 3:
                 utils.print_score(self.log, time.time() - self.time)
